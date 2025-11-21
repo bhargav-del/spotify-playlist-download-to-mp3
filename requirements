@@ -1,0 +1,6 @@
+first install python and in the install page click on run as admin and add to path, then go on cmd and type these commands INDIVIDUALLY
+pip install spotdl
+pip install customtkinter
+pip install yt-dlp
+pip install mutagen
+and then go in python create new file and enjoy!
