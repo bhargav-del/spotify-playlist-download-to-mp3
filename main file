@@ -1,0 +1,39 @@
+import customtkinter as ctk
+import subprocess
+import os
+
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("blue")
+
+def download():
+    url = entry.get()
+    if not url.strip():
+        status.configure(text="❌ Please enter a valid URL", text_color="red")
+        return
+    
+    status.configure(text="⏳ Downloading... Please wait", text_color="yellow")
+    window.update()
+
+    command = f"spotdl {url}"
+    os.system(command)
+    
+    status.configure(text="✅ Download Complete!", text_color="green")
+
+
+window = ctk.CTk()
+window.geometry("500x250")
+window.title("Spotify Playlist MP3 Downloader")
+
+label = ctk.CTkLabel(window, text="Enter Spotify Playlist / Song / Album URL:", font=("Arial", 16))
+label.pack(pady=10)
+
+entry = ctk.CTkEntry(window, width=400, height=40, placeholder_text="Paste URL here...")
+entry.pack(pady=10)
+
+button = ctk.CTkButton(window, text="Download MP3", command=download)
+button.pack(pady=10)
+
+status = ctk.CTkLabel(window, text="", font=("Arial", 14))
+status.pack(pady=10)
+
+window.mainloop()
